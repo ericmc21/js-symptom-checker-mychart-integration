@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<script src='dist/fhir-client-v2.js'>
+
+	</script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+
+	</script>
+
+	<style>
+		#main {
+			background: lightgray;
+			margin: 1em;
+			padding: 1em;
+			font-size: 2em;
+		}
+	</style>
+</head>
+
+<body>
+<h1>Hello</h1>
+	<div id="main"></div>
+
+	<script>
+		var myApp = {}
+
+    FHIR.oauth2.ready()
+    .then(function(client){ 
+      myApp.smart = client
+      doRequests()
+    })
+
+    async function doRequests(){
+
+      //var loincs = [ encodeURIComponent("http://loinc.org|4548-4") ] //4548-4 = HgA1C  //4544-3 = hematocrit
+      var obs = await fetch(myApp.smart.state.serverUrl+"/Patient/" + myApp.smart.patient.id,{
+        headers:{  
+          "Accept":"application/json+fhir",
+          "Authorization":"Bearer "+myApp.smart.state.tokenResponse.access_token
+        }
+        }).then(function(data){
+          return data
+      })
+
+      var probz = await fetch(myApp.smart.state.serverUrl+"/Condition?patient=" + myApp.smart.patient.id + "&category=problem-list-item",{
+        headers:{  
+          "Accept":"application/json+fhir",
+          "Authorization":"Bearer "+myApp.smart.state.tokenResponse.access_token
+        }
+        }).then(function(data){
+          return data
+      })
+
+      var response = await obs.json()
+      var vitalSigns = await probz.json()
+
+      console.log(response)
+      console.log(vitalSigns)
+
+      var toInsert = ""
+
+//if there is no entry, then there was no test found
+      if (!response.name[0]){
+
+        toInsert += "We could not find any info!"
+
+      }else{
+        
+        
+        toInsert += "Patient Name:  "+response.name[0].text+"<br/>"
+        toInsert += "Age:  "+getAge(response.birthDate)+"<br/>"
+        toInsert += "Gender:  "+response.gender+"<br/><br/>"
+
+        toInsert += "<ul>"
+       
+       for(i = 0; i < vitalSigns.entry.length -1; i++){
+      
+          toInsert += "<li>Description: " + vitalSigns.entry[i].resource.code.text +  "<br/> Code:  "+vitalSigns.entry[i].resource.code.coding[0].code+"</li>"
+        }
+        toInsert += "</ul>"
+         
+
+        
+
+      
+      }
+
+      $("#main").html(toInsert)
+
+    }
+
+
+    function getAge(dateString) {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
+	</script>
+
+</body>
+
+</html>

@@ -6,7 +6,7 @@
  */
 
 const settings = {
-  'app-id': '',
+  'app-id': 'test',
   'app-key': ''
 };
 

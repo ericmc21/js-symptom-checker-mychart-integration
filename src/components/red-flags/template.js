@@ -1,5 +1,5 @@
 /**
- * Created by Tomasz Gabrysiak @ Infermedica on 08/02/2017.
+ * Created by Eric McLean @ Infermedica on 09/05/2022.
  */
 
 import _ from 'lodash';
@@ -19,13 +19,13 @@ const symptomHtmlMapper = (suggestedSymptoms) => {
 };
 
 const template = (context) => {
-  return context.api.getSuggestedSymptoms(context.data).then((suggestedSymptoms) => {
+  return context.api.getRedFlags(context.data).then((suggestedSymptoms) => {
     if (!suggestedSymptoms.length) {
       document.getElementById('next-step').click();
       return '<p><i class="fa fa-circle-o-notch fa-spin fa-fw"></i> I am thinking...</p>';
     }
     return html`
-      <h5 class="card-title">Do you have any of the following symptoms?</h5>
+      <h5 class="card-title">Do you have any of the following red flag symptoms?</h5>
       <div class="card-text">
         <form>
           ${symptomHtmlMapper(suggestedSymptoms)}

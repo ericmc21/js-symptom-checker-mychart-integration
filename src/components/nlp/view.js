@@ -37,7 +37,7 @@ export default class NLPView extends View {
         <li>
           <i class="text-${o.choice_id === 'present' ? 'success' : 'danger'} 
             fa fa-fw fa-${o.choice_id === 'present' ? 'plus' : 'minus'}-circle"></i>
-          ${o.name}
+          ${o.common_name}
         </li>
       `;
     }

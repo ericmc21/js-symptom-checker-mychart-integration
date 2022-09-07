@@ -66,11 +66,49 @@ export default class InfermedicaApi {
     return this.post('suggest', JSON.stringify(data));
   }
 
+  getRedFlags(data) {
+    return this.post('red_flags', JSON.stringify(data));
+  }
+
   diagnosis(data) {
     return this.post('diagnosis', JSON.stringify(data));
   }
 
+  triage(data) {
+    console.log(data);
+    return this.post('triage', JSON.stringify(data));
+  }
+
   explain(data) {
     return this.post('explain', JSON.stringify(data));
+  }
+
+  formatTriage(data) {
+    return this.triage(data).then((value) => {
+      console.log(value);
+      this.returnStr = '';
+      if (value.triage_level === 'emergency_ambulance') {
+        this.returnStr = '<h2>Call an ambulance</h2><p>Your symptoms are very severe ';
+        this.returnStr += 'and you may need emergency care.</p>';
+      } else if (value.triage_level === 'emergency') {
+        this.returnStr = '<h2>Emergency</h2><p>Your symptoms are worrying and you may need ';
+        this.returnStr += 'urgent medical attention. If you cannot get to an emergency room, ';
+        this.returnStr += 'please call an ambulance.</p>';
+      } else if (value.triage_level === 'conslutation_24') {
+        this.returnStr = '<h2>See a doctor within 24 hours</h2><p>Your symptoms may need a medical ';
+        this.returnStr += 'evaluation right away. If your symptoms suddenly worsen, go ';
+        this.returnStr += 'to the nearest emergency room.</p>';
+      } else if (value.triage_level === 'consultation') {
+        this.returnStr = '<h2>Consult a doctor</h2><p>Your symptoms may require a ';
+        this.returnStr += 'medical evaluation. Make an appointment with your doctor. ';
+        this.returnStr += 'If your symptoms worsen, see a doctor right away</p>';
+      } else {
+        this.returnStr = '<h2>Self-treatment can be sufficient</h2><p>Usually your symptoms do ';
+        this.returnStr += 'not require medical attention and may improve on their own. ';
+        this.returnStr += 'You can try to get your disease under control with home remedies. ';
+        this.returnStr += 'If your symptoms worsen or new symptoms appear, seek medical advice immediately.</p>';
+      }
+      return this.returnStr;
+    });
   }
 }

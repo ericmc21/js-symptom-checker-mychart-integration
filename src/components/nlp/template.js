@@ -12,12 +12,13 @@ const template = (context) => {
         <form>
           <div class="form-group">
             <label for="input-feel">
-              We will try to recognize your symptoms using Natural Language Processing algorithms.
+              Please enter your symptoms or what is bothering you the most.
             </label>
-            <textarea placeholder="e.g. I got headache" class="form-control" id="input-feel" rows="4"></textarea>
+            <textarea placeholder="e.g. I have a headache and a sore throat." 
+            class="form-control" id="input-feel" rows="4"></textarea>
           </div>
         </form>
-        <p>Identified observations:</p>
+        <p>Initial symptoms:</p>
         <ul class="list-unstyled" id="observations">
         </ul>
         <p class="text-muted small">

@@ -5,13 +5,12 @@
 const template = (context) => {
   return new Promise((resolve) => {
     resolve(`
-      <h5 class="card-title">Welcome to the Symptom Checker Demo.</h5>
+      <h5 class="card-title">Welcome to the Quick Triage & Symptom Checker Demo</h5>
       <div class="card-text">
         <p>
           We created this example to help you work with our API, 
-          and show you how to implement a simple symptom checker &mdash; 
-          an application that mimics doctor's interview and gives you a preliminary diagnosis basing on 
-          our mathematical model.
+          and show you how to implement a "quick triage" flow then also allows for the 
+          user to complete the full assessment.  
         </p>
         <p>
           Visit our 

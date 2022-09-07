@@ -6,7 +6,7 @@ const template = `
   <div class="card">
       <div class="card-header">
           <i class="fa fa-user-md"></i> 
-          Symptom Checker Example
+          Quick Triage Example
           <span class="d-none d-sm-block float-right text-muted">
             powered by 
             <a href="http://infermedica.com/">

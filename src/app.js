@@ -70,8 +70,22 @@ export default class DemoApp extends App {
           api: this.api,
           patient: this.patient
         },
-        view: 'geo-risks'
+        view: 'red-flags'
       },
+      {
+        context: {
+          api: this.api,
+          patient: this.patient
+        },
+        view: 'quick-triage'
+      },
+      /*   {
+        context: {
+          api: this.api,
+          patient: this.patient
+        },
+        view: 'geo-risks'
+      }, */
       {
         context: {
           api: this.api,
@@ -105,8 +119,7 @@ export default class DemoApp extends App {
 
   nextStep() {
     this.currentStep += 1;
-    this.currentStep %= 8;
-
+    this.currentStep %= 9;
     const currentView = this.views[this.currentStep];
 
     this.controller.destroyView();

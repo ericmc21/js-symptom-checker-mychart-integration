@@ -51,7 +51,7 @@ async function getEpicProblems() {
 export default class EpicFhirClient {
   constructor() {
     this.message = 'my message';
-    this.age = 25;
+    this.age = 48;
     this.sex = 'male';
   }
 

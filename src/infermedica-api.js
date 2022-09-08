@@ -94,7 +94,7 @@ export default class InfermedicaApi {
         this.returnStr = '<h2>Emergency</h2><p>Your symptoms are worrying and you may need ';
         this.returnStr += 'urgent medical attention. If you cannot get to an emergency room, ';
         this.returnStr += 'please call an ambulance.</p>';
-      } else if (value.triage_level === 'conslutation_24') {
+      } else if (value.triage_level === 'consultation_24') {
         this.returnStr = '<h2>See a doctor within 24 hours</h2><p>Your symptoms may need a medical ';
         this.returnStr += 'evaluation right away. If your symptoms suddenly worsen, go ';
         this.returnStr += 'to the nearest emergency room.</p>';

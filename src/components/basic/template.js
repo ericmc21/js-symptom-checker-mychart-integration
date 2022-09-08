@@ -5,7 +5,7 @@
 const template = (context) => {
   return new Promise((resolve) => {
     resolve(`
-        <h5 class="card-title">Please select your sex and age.</h5>
+        <h5 class="card-title">Please select your gender at birth and age.</h5>
         <div class="card-text">
           <form>
             <div class="form-group row">
@@ -14,7 +14,7 @@ const template = (context) => {
                 <div class="custom-control custom-radio custom-control-inline">
                   <input type="radio" id="sex-radio-inline-1" 
                     name="sex-radio-inline" class="input-sex custom-control-input" 
-                    value="male" ${context.epic.sex === 'male' ? 'checked' : ''}>
+                    value="male" ${context.patient.sex === 'male' ? 'checked' : ''}>
                   <label class="custom-control-label" for="sex-radio-inline-1">
                     <i class="fa fa-fw fa-male"></i> male
                   </label>
@@ -22,7 +22,7 @@ const template = (context) => {
                 <div class="custom-control custom-radio custom-control-inline">
                   <input type="radio" id="sex-radio-inline-2" 
                     name="sex-radio-inline" class="input-sex custom-control-input" 
-                    value="female" ${context.epic.sex === 'female' ? 'checked' : ''}>
+                    value="female" ${context.patient.sex === 'female' ? 'checked' : ''}>
                   <label class="custom-control-label" for="sex-radio-inline-2">
                     <i class="fa fa-fw fa-female"></i> female
                   </label>
@@ -32,7 +32,7 @@ const template = (context) => {
             <div class="form-group row">
               <label for="input-age" class="col-sm-2 col-form-label">Age</label>
               <div class="col-sm-2">
-                <input type="number" class="form-control" id="input-age" value="${context.epic.age}">
+                <input type="number" class="form-control" id="input-age" value="${context.patient.age}">
               </div>
             </div>
           </form>

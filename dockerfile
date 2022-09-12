@@ -1,8 +1,15 @@
-FROM node:18.8.0-alpine3.16
+FROM ubuntu
 WORKDIR /app
+RUN apt-get -y update && apt-get -y install nginx 
+RUN apt-get -y install npm
+# Copy the Nginx config
 COPY . .
-RUN npm install
-RUN yarn install
-ENV NODE_OPTIONS=--openssl-legacy-provider
-EXPOSE 8080
-CMD ["yarn", "dev"]
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Expose the port for access
+EXPOSE 80/tcp
+
+# Run the Nginx server
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+
+

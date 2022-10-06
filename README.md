@@ -74,3 +74,5 @@ The solution presented above is just an example of applications using Infermedic
 
 This application is available on [MIT license](./LICENSE).
 
+
+

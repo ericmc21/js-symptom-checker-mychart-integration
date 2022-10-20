@@ -1,0 +1,5 @@
+trigger-deployment:
+  only:
+    - master
+  stage: deploy
+  trigger: infermedica/development/customer-success-and-implementation/js-symptom-checker-quick-triage-deployment

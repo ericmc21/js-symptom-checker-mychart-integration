@@ -16,6 +16,9 @@ const template = (context) => {
           Please note that this was our "Quick Triage" flow.  For the most 
           accurate results, continue to the end of the interview.
         </div>
+
+        <button class="btn btn-primary">Book an appointment</button><br/>
+      
       </div>
     `;
   });

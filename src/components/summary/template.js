@@ -40,7 +40,7 @@ const template = (context) => {
         </div>
       </div>
       <p>Interview ID: ${context.api.interviewId}</p>
-      <p>Triage: ${context.api.formatTriage(context.patient.toDiagnosis()).then((result) => console.log(result))}</p>
+      <p>${context.api.returnStr}</p>
     `;
   });
 };

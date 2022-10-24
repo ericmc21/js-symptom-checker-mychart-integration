@@ -34,7 +34,7 @@ const template = (context) => {
           <a target="_blank" href="https://developer.infermedica.com/docs/diagnosis#helping-us-improve-the-engine">
             Interview-Id
           </a>
-          was created.</p>
+          was created. </p>
       </div>
     `);
   });

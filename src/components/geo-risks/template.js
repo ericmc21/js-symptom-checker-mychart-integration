@@ -16,6 +16,7 @@ const template = (context) => {
           <i class="fa fa-info-circle"></i> Above you see risk factors related to geographical location.
         </p>
       </div>
+      <p>Interview ID: ${context.api.interviewId}</p>
     `;
   });
 };

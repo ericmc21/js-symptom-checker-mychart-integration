@@ -25,6 +25,7 @@ const conditionsHtmlMapper = (conditions) => {
   `);
 };
 
+
 const template = (context) => {
   return context.api.diagnosis(context.patient.toDiagnosis()).then((data) => {
     return html`
@@ -38,6 +39,8 @@ const template = (context) => {
           and is not a qualified medical opinion.
         </div>
       </div>
+      <p>Interview ID: ${context.api.interviewId}</p>
+      <p>Triage: ${context.api.formatTriage(context.patient.toDiagnosis()).then((result) => console.log(result))}</p>
     `;
   });
 };

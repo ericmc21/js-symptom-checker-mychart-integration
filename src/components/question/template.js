@@ -62,6 +62,7 @@ const template = (context) => {
         ${context.question.type !== 'single'
     ? '<button class="next-question btn btn-primary">Next question</button>' : ''}
       </div>
+      <p>Interview ID: ${context.api.interviewId}</p>
     `);
   });
 };

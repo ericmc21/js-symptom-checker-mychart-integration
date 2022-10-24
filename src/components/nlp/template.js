@@ -38,6 +38,7 @@ const template = (context) => {
           <span class="badge badge-primary">Next</span>.
         </p>
       </div>
+      <p>Interview ID: ${context.api.interviewId}</p>
     `);
   });
 };

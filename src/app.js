@@ -25,7 +25,7 @@ export default class DemoApp extends App {
 
     this.patient = new Patient();
     this.epicfhirclient = new EpicFhirClient();
-    this.epicfhirclient.getRiskFactors('Calling risk factors bro');
+    this.epicfhirclient.getRiskFactors('Calling risk factors bruh');
 
     this.currentStep = 0;
 
@@ -39,6 +39,7 @@ export default class DemoApp extends App {
       {
         context: {
           patient: this.patient,
+          api: this.api,
           epic: this.epicfhirclient
         },
         view: 'basic'

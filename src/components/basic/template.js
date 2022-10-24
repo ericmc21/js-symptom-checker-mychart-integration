@@ -42,6 +42,7 @@ const template = (context) => {
             Typically this is the first question you should ask in your symptom checker. 
             Read more
             <a target="_blank" href="https://developer.infermedica.com/docs/diagnosis#sex-and-age">here</a>.</p>
+            <p>Interview ID: ${context.api.interviewId}</p>
         </div>
       `);
   });

@@ -36,6 +36,7 @@ const template = (context) => {
           based on the information gathered so far during the interview.
         </p>
       </div>
+      <p>Interview ID: ${context.api.interviewId}</p>
     `;
   });
 };

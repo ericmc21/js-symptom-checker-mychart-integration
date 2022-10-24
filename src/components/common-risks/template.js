@@ -21,6 +21,7 @@ const template = (context) => {
             <a target="_blank" href="https://developer.infermedica.com/docs/diagnosis#common-risk-factors">here</a>.
           </p>
         </div>
+        <p>Interview ID: ${context.api.interviewId}</p>
       `;
   });
 };

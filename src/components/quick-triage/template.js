@@ -20,6 +20,7 @@ const template = (context) => {
         <button class="btn btn-primary">Book an appointment</button><br/>
       
       </div>
+      <p>Interview ID: ${context.api.interviewId}</p>
     `;
   });
 };

@@ -11,6 +11,11 @@ export default class InfermedicaApi {
     this.apiModel = apiModel;
 
     this.interviewId = null;
+    this.triageResult = null;
+  }
+
+  getInterviewId() {
+    return this.interviewId;
   }
 
   generateInterviewId() {
@@ -75,7 +80,6 @@ export default class InfermedicaApi {
   }
 
   triage(data) {
-    console.log(data);
     return this.post('triage', JSON.stringify(data));
   }
 
@@ -85,7 +89,6 @@ export default class InfermedicaApi {
 
   formatTriage(data) {
     return this.triage(data).then((value) => {
-      console.log(value);
       this.returnStr = '';
       if (value.triage_level === 'emergency_ambulance') {
         this.returnStr = '<h2>Call an ambulance</h2><p>Your symptoms are very severe ';

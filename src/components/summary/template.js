@@ -39,7 +39,10 @@ const template = (context) => {
           and is not a qualified medical opinion.
         </div>
       </div>
-      <p>Interview ID: ${context.api.interviewId}</p>
+      <p>Interview ID: 
+      <a href='https://metabase.infermedica.com/build/simulation/?interview=${context.api.interviewId}' 
+      target="_blank">
+      ${context.api.interviewId}</a></p>
       <p>${context.api.returnStr}</p>
     `;
   });

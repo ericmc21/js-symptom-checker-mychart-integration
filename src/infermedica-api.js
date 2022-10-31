@@ -76,6 +76,7 @@ export default class InfermedicaApi {
   }
 
   diagnosis(data) {
+    this.returnStr = this.formatTriage(data);
     return this.post('diagnosis', JSON.stringify(data));
   }
 

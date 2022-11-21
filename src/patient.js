@@ -62,6 +62,7 @@ export default class Patient {
         });
       }
 
+      console.log(diagnosisSymptom);
       return diagnosisSymptom;
     });
     return res;

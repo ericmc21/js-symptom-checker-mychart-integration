@@ -59,8 +59,9 @@ export default class InfermedicaApi {
     return this.get(`symptoms?age.value=${age.value}`);
   }
 
-  getRiskFactors(age) {
-    return this.get(`risk_factors?age.value=${age.value}`);
+  getRiskFactors(data) {
+    data.suggest_method = 'demographic_risk_factors';
+    return this.post('suggest', JSON.stringify(data));
   }
 
   parse(data) {
@@ -68,11 +69,13 @@ export default class InfermedicaApi {
   }
 
   getSuggestedSymptoms(data) {
+    data.suggest_method = 'symptoms';
     return this.post('suggest', JSON.stringify(data));
   }
 
   getRedFlags(data) {
-    return this.post('red_flags', JSON.stringify(data));
+    data.suggest_method = 'red_flags';
+    return this.post('suggest', JSON.stringify(data));
   }
 
   diagnosis(data) {

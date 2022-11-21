@@ -2,11 +2,10 @@
  * Created by Eric McLean @ Infermedica on 09/05/2022.
  */
 
-import _ from 'lodash';
 import html from '../../templates/helpers';
 
 const symptomHtmlMapper = (suggestedSymptoms) => {
-  return _.take(suggestedSymptoms, 5).map((symptom) => {
+  return suggestedSymptoms.map((symptom) => {
     return html`
       <div class="custom-control custom-checkbox">
         <input id="${symptom.id}" type="checkbox" class="input-symptom custom-control-input">

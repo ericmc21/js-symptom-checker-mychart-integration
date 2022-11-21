@@ -1,28 +1,42 @@
 /**
- * Created by Tomasz Gabrysiak @ Infermedica on 08/02/2017.
+ * Created by Eric McLean @ Infermedica on 09/05/2022.
  */
 
-import html, {riskHtmlMapper} from '../../templates/helpers';
+import html from '../../templates/helpers';
+
+const symptomHtmlMapper = (suggestedSymptoms) => {
+  return suggestedSymptoms.map((symptom) => {
+    return html`
+      <div class="custom-control custom-checkbox">
+        <input id="${symptom.id}" type="checkbox" class="input-symptom custom-control-input">
+        <label for="${symptom.id}" class="custom-control-label custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+          ${symptom.common_name}
+        </label>
+      </div>
+    `;
+  });
+};
 
 const template = (context) => {
-  return context.api.getRiskFactors(context.patient.age).then((risks) => {
+  return context.api.getRiskFactors(context.data).then((suggestedSymptoms) => {
+    if (!suggestedSymptoms.length) {
+      document.getElementById('next-step').click();
+      return '<p><i class="fa fa-circle-o-notch fa-spin fa-fw"></i> I am thinking...</p>';
+    }
     return html`
-        <h5 class="card-title">Please check all that apply to you.</h5>
-        <div class="card-text">
-          <form>
-            ${riskHtmlMapper(risks, context.commonRiskFactors)}
-          </form>
-          <p class="text-muted small">
-            <i class="fa fa-info-circle"></i> Above you see the most common risk factors. 
-            Although /diagnosis may return questions about risk factors, 
-            when implementing a symptom checker we recommend asking the patient about common risk factors 
-            before the actual interview begins. This helps to steer the interview in the right direction 
-            and to reduce its length. Please read more about risk factors 
-            <a target="_blank" href="https://developer.infermedica.com/docs/diagnosis#common-risk-factors">here</a>.
-          </p>
-        </div>
-        <p>Interview ID: ${context.api.interviewId}</p>
-      `;
+    <h5 class="card-title">Do you have any of the following risk factors?</h5>
+    <div class="card-text">
+      <form>
+        ${symptomHtmlMapper(suggestedSymptoms)}
+      </form>
+      <p class="text-muted small">
+        <i class="fa fa-info-circle"></i>
+        This is a list of symptoms suggested by our AI,
+        based on the information gathered so far during the interview.
+      </p>
+    </div>
+    <p>Interview ID: ${context.api.interviewId}</p>
+  `;
   });
 };
 

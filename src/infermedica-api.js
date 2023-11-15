@@ -75,7 +75,7 @@ export default class InfermedicaApi {
 
   getRedFlags(data) {
     data.suggest_method = 'red_flags';
-    return this.post('suggest', JSON.stringify(data));
+    return this.post('suggest?max_results=12', JSON.stringify(data));
   }
 
   diagnosis(data) {
